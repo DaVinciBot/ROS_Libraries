@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/opt/ros/kinetic/include",
+                "/home/florian/Documents/dvb_ws/ROS_Libraries/src/dvb_hardware/include",
+                "/home/florian/Documents/dvb_ws/ROS_Libraries/src/dvb_map/include",
+                "/home/florian/Documents/dvb_ws/ROS_Libraries/src/dvb_robot/include",
+                "/usr/include"
+            ],
+            "name": "Linux",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
