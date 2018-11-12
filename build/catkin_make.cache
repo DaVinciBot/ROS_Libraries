@@ -1,2 +1,0 @@
-dvb_hardware:dvb_map:dvb_robot
--DCATKIN_DEVEL_PREFIX=/home/florian/Documents/dvb_ws/ROS_Libraries/devel -DCMAKE_INSTALL_PREFIX=/home/florian/Documents/dvb_ws/ROS_Libraries/install -G Unix Makefiles

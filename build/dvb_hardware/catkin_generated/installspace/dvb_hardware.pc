@@ -1,8 +1,0 @@
-prefix=/home/florian/Documents/dvb_ws/ROS_Libraries/install
-
-Name: dvb_hardware
-Description: Description of dvb_hardware
-Version: 0.0.0
-Cflags: -I/home/florian/Documents/dvb_ws/ROS_Libraries/install/include
-Libs: -L/home/florian/Documents/dvb_ws/ROS_Libraries/install/lib -ldvb_hardware
-Requires: geometry_msgs nav_msgs roscpp rospy std_msgs
