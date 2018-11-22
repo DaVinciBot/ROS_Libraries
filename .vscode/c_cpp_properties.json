@@ -10,7 +10,8 @@
                 "/home/florian/Documents/dvb_ws/ROS_Libraries/src/dvb_hardware/include",
                 "/home/florian/Documents/dvb_ws/ROS_Libraries/src/dvb_map/include",
                 "/home/florian/Documents/dvb_ws/ROS_Libraries/src/dvb_robot/include",
-                "/usr/include"
+                "/usr/include",
+                "${workspaceFolder}/dvb_hardware/include"
             ],
             "name": "Linux",
             "intelliSenseMode": "gcc-x64"
