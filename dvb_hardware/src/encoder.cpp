@@ -1,6 +1,6 @@
 #include "dvb_hardware/encoder.h"
 
-//test
+//test2
 
 Encoder::Encoder(std::string topic_encoder_name, bool debug_mode) :
     Hardware(debug_mode),
