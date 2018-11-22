@@ -20,7 +20,7 @@ class Simple_Pid
 
         bool setParams();
 
-        void update(float_t encoder_val);
+        void calcule_pid(float_t encoder_val);
 
         void spinOnce(const std_msgs::Float32::ConstPtr& encoder_msg);
         void spin();

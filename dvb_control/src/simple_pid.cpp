@@ -1,4 +1,4 @@
-#include "simple_pid.h"
+#include "dvb_control/simple_pid.h"
 
 Simple_Pid::Simple_Pid(std::string topic_motor_name, std::string topic_encoder_name, bool debug_mode) :
 	node_name_(""),
@@ -75,7 +75,8 @@ void Simple_Pid::calcule_pid(float_t encoder_val){
 	float_t P_val = 0;
 	float_t I_val = 0;
 	float_t D_val = 0;
-previous_error_ = 0;
+	
+	previous_error_ = 0;
 	integral_ = 0;
 	error_ = 0;
 	derivative_ = 0;
@@ -110,8 +111,6 @@ void Simple_Pid::spinOnce(const std_msgs::Float32::ConstPtr& encoder_msg){
 
 	if(pid_enable_ && pid_startable_){
 		Simple_Pid::calcule_pid(encoder_msg->data);
-
-		ros::Duration(1).sleep();
 	}
 	else{
 		ROS_INFO_COND(debug_mode_,"PID Controller disabled");
@@ -125,7 +124,7 @@ void Simple_Pid::spin(){
 	ros::Duration(0.5).sleep();
 
 	while(ros::ok()){
-		ros::Duration(0.001).sleep();
+		ros::Duration(freq_).sleep();
 		ros::spinOnce();
 	}
 }
