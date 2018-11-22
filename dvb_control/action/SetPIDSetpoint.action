@@ -1,0 +1,12 @@
+#Goal
+int32 setpoint
+
+---
+
+#Callback
+bool sucedeed
+
+---
+
+#Feedback
+int32 current_value
