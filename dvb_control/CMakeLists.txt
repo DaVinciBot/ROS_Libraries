@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib
   actionlib_msgs
   geometry_msgs
-  message_generation
+  genmsg
   roscpp
   rospy
   sensor_msgs
@@ -21,7 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES dvb_control
-  CATKIN_DEPENDS actionlib actionlib_msgs geometry_msgs message_generation roscpp rospy sensor_msgs std_msgs
+  CATKIN_DEPENDS actionlib actionlib_msgs geometry_msgs genmsg roscpp rospy sensor_msgs std_msgs
 )
 
 ###########
