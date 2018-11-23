@@ -1,0 +1,12 @@
+#Goal
+geometry_msgs/Pose2D target_pose
+
+---
+
+#Callback
+geometry_msgs/Pose2D final_pose
+
+---
+
+#Feedback
+geometry_msgs/Pose2D current_pose

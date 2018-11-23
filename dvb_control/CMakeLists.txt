@@ -19,7 +19,8 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 add_action_files(DIRECTORY action FILES SetPIDSetpoint.action)
-generate_messages(DEPENDENCIES std_msgs actionlib_msgs)
+add_action_files(DIRECTORY action FILES SetMoveToPoint.action)
+generate_messages(DEPENDENCIES std_msgs geometry_msgs actionlib_msgs)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -39,6 +40,7 @@ include_directories(
 add_library(dvb_control
   src/simple_pid.cpp
   src/pid_control_cdr.cpp
+  src/move_to_point.cpp
 )
 
 target_link_libraries(dvb_control
