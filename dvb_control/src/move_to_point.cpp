@@ -1,6 +1,6 @@
 #include "dvb_control/move_to_point.h"
 
-Move_To_Point::Move_To_Point(geometry_msgs::Pose2D initial_pose) :
+Move_To_Point::Move_To_Point(geometry_msgs::Pose2D initial_pose, geometry_msgs::Pose2D target_pose) :
     node_name_(""),
     topic_pid_left_name_(""),
     topic_pid_right_name_(""),
