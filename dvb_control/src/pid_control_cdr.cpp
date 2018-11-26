@@ -2,6 +2,7 @@
 
 Pid_Control_CDR::Pid_Control_CDR(std::string topic_motor_name, std::string topic_encoder_name, bool debug_mode) :
     node_name_(""),
+	topic_control_vel_name_(""),
     topic_motor_name_(topic_motor_name),
     topic_encoder_name_(topic_encoder_name),
     debug_mode_(debug_mode),
@@ -16,6 +17,9 @@ Pid_Control_CDR::Pid_Control_CDR(std::string topic_motor_name, std::string topic
     //Node name
 	node_name_ = ros::this_node::getName();
 	ROS_INFO("Starting ROS Node %s", node_name_.c_str());
+
+	//Control vel topic name
+	//topic_control_vel_name_ = 
 
     /*
 		Get all params for ros server
@@ -55,6 +59,11 @@ Pid_Control_CDR::Pid_Control_CDR(std::string topic_motor_name, std::string topic
 Pid_Control_CDR::~Pid_Control_CDR()
 {
 
+}
+
+std::string Pid_Control_CDR::getControlVelTopic()
+{
+	return topic_control_vel_name_;
 }
 
 void Pid_Control_CDR::setGoal()

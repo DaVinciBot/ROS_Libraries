@@ -24,6 +24,8 @@ class Pid_Control_CDR
         Pid_Control_CDR(std::string topic_motor_name, std::string topic_encoder_name, bool debug_mode);
         ~Pid_Control_CDR();
 
+        std::string getControlVelTopic();
+
         void setGoal();
 
         void onEncoderEvent(const std_msgs::Int32::ConstPtr& encoder_msg);
@@ -37,6 +39,8 @@ class Pid_Control_CDR
         std::string node_name_;
 
         //Topics names
+        std::string topic_control_vel_name_;
+
         std::string topic_motor_name_;
         std::string topic_encoder_name_;
 
