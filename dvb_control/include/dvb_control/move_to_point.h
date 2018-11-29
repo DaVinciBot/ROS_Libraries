@@ -10,7 +10,7 @@
 #include "geometry_msgs/Twist.h"
 
 #include "actionlib/server/simple_action_server.h"
-#include "dvb_control/SetMoveToPointAction.h"
+#include "dvb_control/Action_Move_ToPointAction.h"
 
 class Move_To_Point
 {
@@ -36,8 +36,8 @@ class Move_To_Point
         std::string topic_pid_right_name_;
 
         //Action stuffs
-        dvb_control::SetMoveToPointFeedback current_pose_;
-        dvb_control::SetMoveToPointResult final_pose_;
+        //dvb_control::SetMoveToPointFeedback current_pose_;
+        //dvb_control::SetMoveToPointResult final_pose_;
 
         //State
         bool debug_mode_;
@@ -56,7 +56,7 @@ class Move_To_Point
         /*
             Action Server
         */
-        actionlib::SimpleActionServer<dvb_control::SetMoveToPointAction> server_;
+        //actionlib::SimpleActionServer<dvb_control::SetMoveToPointAction> server_;
         
         //Control Velocity
         geometry_msgs::Twist control_vel_left_msg_;

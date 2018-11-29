@@ -8,7 +8,7 @@ Move_To_Point::Move_To_Point(geometry_msgs::Pose2D initial_pose, geometry_msgs::
     move_startable_(false),
     move_enable_(false),
     freq_(0.001),
-    server_(nh_, node_name_, false),
+    //server_(nh_, node_name_, false),
     initial_pose_(initial_pose)
 {
     node_name_ = ros::this_node::getName();
@@ -35,7 +35,7 @@ void Move_To_Point::moveForward()
 
 void Move_To_Point::setGoal()
 {
-    target_pose_ = server_.acceptNewGoal()->target_pose;
+    //target_pose_ = server_.acceptNewGoal()->target_pose;
 }
 
 void Move_To_Point::spinOnce()
