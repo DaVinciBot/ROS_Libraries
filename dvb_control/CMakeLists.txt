@@ -15,17 +15,18 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   sensor_msgs
+  nav_msgs
   std_msgs
 )
 
-add_action_files(DIRECTORY action FILES SetPIDSetpoint.action)
-add_action_files(DIRECTORY action FILES SetMoveToPoint.action)
-generate_messages(DEPENDENCIES std_msgs geometry_msgs actionlib_msgs)
+add_action_files(DIRECTORY action FILES Action_Move_ToPoint.action)
+add_action_files(DIRECTORY action FILES Action_Move_Wheel.action)
+generate_messages(DEPENDENCIES std_msgs nav_msgs geometry_msgs actionlib_msgs)
 
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES dvb_control
-  CATKIN_DEPENDS actionlib actionlib_msgs geometry_msgs genmsg roscpp rospy sensor_msgs std_msgs
+  CATKIN_DEPENDS actionlib actionlib_msgs nav_msgs geometry_msgs genmsg roscpp rospy sensor_msgs std_msgs
   DEPENDS message_runtime
 )
 
