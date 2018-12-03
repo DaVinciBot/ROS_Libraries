@@ -23,7 +23,7 @@ class Motor : public Hardware
         //PIN Number
         int32_t pinPWM_;
         int32_t pinDirection;
-
+	    int32_t pinDirection2; 
         //Control stuffs
         int32_t pwm_;
         bool trigo_dir_;

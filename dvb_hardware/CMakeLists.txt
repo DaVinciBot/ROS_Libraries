@@ -12,6 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
 )
 
+find_package(Boost REQUIRED COMPONENTS system)
+
+set(wiringPi_include "/usr/local/include")
+
+
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -30,7 +35,10 @@ catkin_package(
 include_directories(
  include
   ${catkin_INCLUDE_DIRS}
+   ${wiringPi_include}
 )
+LINK_DIRECTORIES("/usr/local/lib")
+
 
 add_library(dvb_hardware
   src/hardware.cpp
@@ -40,8 +48,12 @@ add_library(dvb_hardware
 )
 
 target_link_libraries(dvb_hardware
-   ${catkin_LIBRARIES}
+   ${catkin_LIBRARIES} wiringPi
 )
+
+##target_link_libraries(sonar_controller
+  ## ${catkin_LIBRARIES} wiringPi
+ ##)
 
 #############
 ## Install ##
