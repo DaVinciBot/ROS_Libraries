@@ -18,7 +18,7 @@
 class Hardware
 {
     public:
-        Hardware(bool debug_mode);
+        Hardware();
 
         virtual ~Hardware();
 

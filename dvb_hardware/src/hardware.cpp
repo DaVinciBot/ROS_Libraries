@@ -1,20 +1,26 @@
 #include "dvb_hardware/hardware.h"
 
-Hardware::Hardware(bool debug_mode) :
-    debug_mode_(debug_mode),
+Hardware::Hardware() :
+    debug_mode_(false),
     hardware_startable_(false),
     hardware_enable_(false),
     freq_(0.001) //1 ms
-{   
+{  
+    nh_ = ros::NodeHandle("~");
 
     /*
 		Get all params for ros server
 	*/
-    if( nh_.hasParam("/frequency") ){
-        nh_.param<double_t>("/frequency", freq_);
+    if( nh_.hasParam("/frequency") ||
+        nh_.hasParam("/debug_mode")
+    )
+    {
+        nh_.getParam("/frequency", freq_);
+        nh_.getParam("/debug_mode", debug_mode_);
     }
-    else{
-		ROS_WARN("Please check if FREQUENCY parameters is set in the ROS Parameter Server !\n");
+    else
+    {
+		ROS_WARN("Please check if FREQUENCY | DEBUG_MODE parameters is set in the ROS Parameter Server !\n");
 	}
 
     rate_ = ros::Duration(freq_);

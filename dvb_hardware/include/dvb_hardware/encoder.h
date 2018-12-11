@@ -20,7 +20,7 @@
 class Encoder : public Hardware
 {
     public:
-        Encoder(std::string topic_encoder_name, bool debug_mode);
+        Encoder();
         virtual ~Encoder();
 
         virtual void spinOnce();

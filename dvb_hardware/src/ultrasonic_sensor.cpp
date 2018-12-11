@@ -7,7 +7,7 @@ const float Sonar::TRAVEL_TIME_MAX = MAX_DISTANCE * DIST_SCALE;
 using namespace std;*/
 
 Ultrasonic_Sensor::Ultrasonic_Sensor(std::string topic_ultrasonic_sensor_name, bool debug_mode) :
-    Hardware(debug_mode),
+    Hardware(),
     dist_(0)
 {
     topic_ultrasonic_sensor_name_ = topic_ultrasonic_sensor_name;

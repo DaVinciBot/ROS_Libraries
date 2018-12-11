@@ -6,7 +6,7 @@
 class Motor : public Hardware
 {
     public:
-        Motor(std::string topic_motor_name, bool debug_mode);
+        Motor();
         virtual ~Motor();
 
         virtual void spinOnce();

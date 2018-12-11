@@ -1,23 +1,18 @@
 #include "dvb_hardware/encoder.h"
 
-//test4
-
-Encoder::Encoder(std::string topic_encoder_name, bool debug_mode) :
-    Hardware(debug_mode),
+Encoder::Encoder() :
+    Hardware(),
     pos_(0)
 {
     //Topic name for motor and encoder
-	topic_encoder_name_ = topic_encoder_name;
+	topic_encoder_name_ = ros::this_node::getName();
 
     //Get Encoder PIN params
-    char paramPinA[50];
-    char paramPinB[50];
+    std::string paramPinA = ros::this_node::getName();
+    std::string paramPinB = ros::this_node::getName();
 
-    sprintf(paramPinA, "%s/pinA", topic_encoder_name.c_str());
-    sprintf(paramPinB, "%s/pinB", topic_encoder_name.c_str());
-
-    std::string pin_a = paramPinA;
-    std::string pin_b = paramPinB;
+    paramPinA.append("/pinA");
+    paramPinB.append("/pinB");
 
     if (
 			nh_.hasParam(paramPinA) ||
@@ -25,10 +20,13 @@ Encoder::Encoder(std::string topic_encoder_name, bool debug_mode) :
             //wiringPiSetup() < 0
     )
     {
-        nh_.param<int32_t>(pin_a, pinA_);
-        nh_.param<int32_t>(pin_b, pinB_);
+        nh_.getParam(paramPinA, pinA_);
+        nh_.getParam(paramPinB, pinB_);
+
+        ROS_INFO("ENCODER : DEBUG_MODE(%d), FREQUENCY(%f), PINA(%d), PINB(%d)", debug_mode_, freq_,pinA_, pinB_);
 
         hardware_startable_ = true;
+        hardware_enable_ = true;
     }
     else{
 		ROS_WARN("Please check if encoder PIN parameters are set in the ROS Parameter Server !\n");
@@ -37,7 +35,7 @@ Encoder::Encoder(std::string topic_encoder_name, bool debug_mode) :
     /*
 		Publishers
 	*/
-	pub_encoder_ = nh_.advertise<std_msgs::Int32>(topic_encoder_name_.c_str(), 10);
+	pub_encoder_ = nh_.advertise<std_msgs::Int32>(topic_encoder_name_.c_str(), 1);
 
     //WIRING PI Setup
     /*
