@@ -7,7 +7,7 @@ const float Sonar::TRAVEL_TIME_MAX = MAX_DISTANCE * DIST_SCALE;
 using namespace std;*/
 
 Ultrasonic_Sensor::Ultrasonic_Sensor(std::string topic_ultrasonic_sensor_name, bool debug_mode) :
-    Hardware(),
+    Dvb_Spinner(),
     dist_(0)
 {
     topic_ultrasonic_sensor_name_ = topic_ultrasonic_sensor_name;
@@ -37,7 +37,7 @@ Ultrasonic_Sensor::Ultrasonic_Sensor(std::string topic_ultrasonic_sensor_name, b
         nh_.param<float_t>("/ultrasonic/distance_scale", distance_scale_);
         nh_.param<float_t>("/ultrasonic/travel_time_max", travel_time_max_);
 
-        hardware_startable_ = true;
+        spinner_startable_ = true;
     }
     else
     {
@@ -97,7 +97,7 @@ float_t Ultrasonic_Sensor::getDistance()
 
 void Ultrasonic_Sensor::spinOnce()
 {
-	  if(hardware_enable_ && hardware_startable_){
+	  if(spinner_enable_ && spinner_startable_){
         getDistance();
         ROS_INFO_COND(debug_mode_, "%s : %d", topic_ultrasonic_sensor_name_.c_str(), dist_);
 	  }

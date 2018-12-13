@@ -1,22 +1,14 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(dvb_hardware)
+project(dvb_spinner)
 
 add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
-  geometry_msgs
-  nav_msgs
   roscpp
   rospy
-  std_msgs
-  sensor_msgs
 )
 
-find_package(dvb_spinner REQUIRED)
-
 find_package(Boost REQUIRED COMPONENTS system)
-
-set(wiringPi_include "/usr/local/include")
 
 
 ###################################
@@ -25,8 +17,8 @@ set(wiringPi_include "/usr/local/include")
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES dvb_hardware
-  CATKIN_DEPENDS geometry_msgs nav_msgs roscpp rospy std_msgs
+  LIBRARIES dvb_spinner
+  CATKIN_DEPENDS roscpp rospy
   #DEPENDS system_lib
 )
 
@@ -37,28 +29,16 @@ catkin_package(
 include_directories(
  include
   ${catkin_INCLUDE_DIRS}
-  ${wiringPi_include}
-  ${dvb_spinner_INCLUDE_DIRS}
-)
-LINK_DIRECTORIES("/usr/local/lib")
-
-
-add_library(dvb_hardware
-  src/hardware.cpp
-  src/encoder.cpp
-  src/motor.cpp
-  src/ultrasonic_sensor.cpp
 )
 
-target_link_libraries(dvb_hardware
-  ${catkin_LIBRARIES} 
-  wiringPi
-  dvb_spinner
+
+add_library(dvb_spinner
+  src/dvb_spinner.cpp
 )
 
-##target_link_libraries(sonar_controller
-  ## ${catkin_LIBRARIES} wiringPi
- ##)
+target_link_libraries(dvb_spinner
+   ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##

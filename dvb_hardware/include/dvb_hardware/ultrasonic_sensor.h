@@ -1,14 +1,16 @@
 #ifndef DEF_ULTRASONIC_SENSOR_H
 #define DEF_ULTRASONIC_SENSOR_H
 
-#include "dvb_hardware/hardware.h"
+#include "dvb_spinner/dvb_spinner.h"
 
-class Ultrasonic_Sensor : public Hardware
+#include "std_msgs/Int32.h"
+
+class Ultrasonic_Sensor : public Dvb_Spinner
 {
     public:
         Ultrasonic_Sensor(std::string topic_ultrasonic_sensor_name, bool debug_mode);
         
-        void spinOnce() override;
+        virtual void spinOnce();
 
         float_t getDistance();
 

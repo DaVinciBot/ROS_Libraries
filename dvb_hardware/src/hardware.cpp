@@ -32,15 +32,7 @@ Hardware::~Hardware(){
 
 void Hardware::spin()
 {
-    //Wait for initialization
-    ROS_INFO_COND(debug_mode_, "Hardware spin function called !");
-    ros::Duration(0.5).sleep();
-
-	while(ros::ok()){
-        spinOnce();
-		rate_.sleep();
-		ros::spinOnce();
-	}
+    
 }
 
 void Hardware::spinOnce(){

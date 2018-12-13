@@ -2,7 +2,7 @@
 #include <wiringPi.h>
 
 Motor::Motor() :
-    Hardware(),
+    Dvb_Spinner(),
     pwm_(0)
 {
     topic_motor_name_ = ros::this_node::getName();
@@ -40,8 +40,8 @@ Motor::Motor() :
 
         ROS_INFO("MOTOR : DEBUG_MODE(%d), FREQUENCY(%f), PINPWM(%d), PINDIR1(%d), PINDIR2(%d)", debug_mode_, freq_, pinPWM_, pinDirection, pinDirection2);
 	
-        hardware_startable_ = true;
-        hardware_enable_ = false;
+        spinner_startable_ = true;
+        spinner_enable_ = false;
     }
     else{
 		ROS_WARN("Please check if motor PIN parameters are set in the ROS Parameter Server !\n");
@@ -81,7 +81,7 @@ void Motor::control_callback(const std_msgs::Int32::ConstPtr& control_msg)
         TODO : Check if exists ros msg to control pwm and direction
     */
 
-    if(hardware_enable_ && hardware_startable_){
+    if(spinner_enable_ && spinner_startable_){
         ROS_INFO_COND(TRUE, "%s : %d", topic_motor_name_.c_str(), control_msg->data);
 
 		Motor::control_motor(control_msg->data, true);

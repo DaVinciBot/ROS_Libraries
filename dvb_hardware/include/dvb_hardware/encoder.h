@@ -1,7 +1,9 @@
 #ifndef DEF_ENCODER_H
 #define DEF_ENCODER_H
 
-#include "dvb_hardware/hardware.h"
+#include "dvb_spinner/dvb_spinner.h"
+
+#include "std_msgs/Int32.h"
 
 /*
  * Utilisation avec codeurs Kuebler 2400 mini
@@ -17,7 +19,7 @@
  *    - GREEN : SIGNAL A en PIN 2 pour gauche, PIN 3 pour droit
 */
 
-class Encoder : public Hardware
+class Encoder : public Dvb_Spinner
 {
     public:
         Encoder();

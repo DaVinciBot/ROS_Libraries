@@ -1,7 +1,7 @@
 #include "dvb_hardware/encoder.h"
 
 Encoder::Encoder() :
-    Hardware(),
+    Dvb_Spinner(),
     pos_(0)
 {
     //Topic name for motor and encoder
@@ -25,8 +25,8 @@ Encoder::Encoder() :
 
         ROS_INFO("ENCODER : DEBUG_MODE(%d), FREQUENCY(%f), PINA(%d), PINB(%d)", debug_mode_, freq_,pinA_, pinB_);
 
-        hardware_startable_ = true;
-        hardware_enable_ = true;
+        spinner_startable_ = true;
+        spinner_enable_ = true;
     }
     else{
 		ROS_WARN("Please check if encoder PIN parameters are set in the ROS Parameter Server !\n");
@@ -79,7 +79,7 @@ void Encoder::increment()
 }
 
 void Encoder::spinOnce(){
-    if(hardware_enable_ && hardware_startable_){
+    if(spinner_enable_ && spinner_startable_){
         increment();
 	}
 	else{

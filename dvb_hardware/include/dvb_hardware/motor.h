@@ -1,9 +1,11 @@
 #ifndef DEF_MOTOR_H
 #define DEF_MOTOR_H
 
-#include "dvb_hardware/hardware.h"
+#include "dvb_spinner/dvb_spinner.h"
 
-class Motor : public Hardware
+#include "std_msgs/Int32.h"
+
+class Motor : public Dvb_Spinner
 {
     public:
         Motor();

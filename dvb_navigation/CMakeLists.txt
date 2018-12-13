@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(dvb_hardware)
+project(dvb_navigation)
 
 add_compile_options(-std=c++11)
 
@@ -9,14 +9,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  sensor_msgs
+  tf
 )
 
-find_package(dvb_spinner REQUIRED)
-
 find_package(Boost REQUIRED COMPONENTS system)
-
-set(wiringPi_include "/usr/local/include")
 
 
 ###################################
@@ -25,8 +21,8 @@ set(wiringPi_include "/usr/local/include")
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES dvb_hardware
-  CATKIN_DEPENDS geometry_msgs nav_msgs roscpp rospy std_msgs
+  LIBRARIES dvb_navigation
+  CATKIN_DEPENDS geometry_msgs nav_msgs roscpp rospy std_msgs tf
   #DEPENDS system_lib
 )
 
@@ -37,28 +33,17 @@ catkin_package(
 include_directories(
  include
   ${catkin_INCLUDE_DIRS}
-  ${wiringPi_include}
-  ${dvb_spinner_INCLUDE_DIRS}
-)
-LINK_DIRECTORIES("/usr/local/lib")
-
-
-add_library(dvb_hardware
-  src/hardware.cpp
-  src/encoder.cpp
-  src/motor.cpp
-  src/ultrasonic_sensor.cpp
 )
 
-target_link_libraries(dvb_hardware
-  ${catkin_LIBRARIES} 
-  wiringPi
-  dvb_spinner
+
+add_library(dvb_navigation
+  src/diff_robot_odometry.cpp
+  src/move_base.cpp
 )
 
-##target_link_libraries(sonar_controller
-  ## ${catkin_LIBRARIES} wiringPi
- ##)
+target_link_libraries(dvb_navigation
+   ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
