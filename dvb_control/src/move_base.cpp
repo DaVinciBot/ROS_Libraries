@@ -1,10 +1,12 @@
-#include "dvb_control/move_base.h"
+ #include "dvb_control/move_base.h"
+
+/**
 
 Move_Base::Move_Base() :
     node_name_(""),
     debug_mode_(false),
     move_startable_(false),
-    move_enable_(false),
+    moe_enable_(false),
     topic_pid_left_name_(""),
     topic_pid_right_name_(""),
     freq_(0.0),
@@ -17,7 +19,7 @@ Move_Base::Move_Base() :
 
     /*
 		Get all params for ros server
-	*/
+	
 	//PID params
 	if (
 			nh_.hasParam("/robot/base/wheel/radius") ||
@@ -40,4 +42,4 @@ Move_Base::Move_Base() :
 void Move_Base::onTwistMsgEvent(const geometry_msgs::Twist::ConstPtr& twist_msg)
 {
 	
-}
+}*/
