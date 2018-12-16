@@ -1,11 +1,9 @@
 #ifndef DEF_PID
 #define DEF_PID
 
-#include "ros/ros.h"
-#include "ros/time.h"
-#include "ros/console.h"
-
 #include "dvb_spinner/dvb_spinner.h"
+
+#include "std_msgs/Int16.h"
 
 class Pid : public Dvb_Spinner
 {
@@ -14,11 +12,22 @@ class Pid : public Dvb_Spinner
 
         ~Pid();
 
-        void calcul_pid(float_t prev_val);
+        virtual void spinOnce();
+
+        void onSetPointEvent(const std_msgs::Int16::ConstPtr& setpoint_msg);
+        void onSensorEvent(const std_msgs::Int16::ConstPtr& sensor_msg);
+        void updateOutput();
+
+        void calcul_pid();
+
+        int getOutput();
 
      private:
-	 	ros::NodeHandle nh_;
-		
+        std::string topic_sub_setpoint_name_;
+        std::string topic_sub_sensor_name_;
+        std::string topic_pub_output_name_;
+
+        int sensor_val_;
         int target_;
         int output_;
 
@@ -35,5 +44,12 @@ class Pid : public Dvb_Spinner
          //Time
         ros::Time prev_time_;
         ros::Duration dt_;
+
+        //Subscriber
+        ros::Subscriber sub_setpoint_;
+        ros::Subscriber sub_sensor_;
+
+        //Publisher
+        ros::Publisher pub_;
 };
  #endif 

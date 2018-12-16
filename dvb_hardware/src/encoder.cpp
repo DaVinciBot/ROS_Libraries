@@ -5,11 +5,11 @@ Encoder::Encoder() :
     pos_(0)
 {
     //Topic name for motor and encoder
-	topic_encoder_name_ = ros::this_node::getName();
+	topic_encoder_name_ = nh_.getNamespace().c_str();
 
     //Get Encoder PIN params
-    std::string paramPinA = ros::this_node::getName();
-    std::string paramPinB = ros::this_node::getName();
+    std::string paramPinA = nh_.getNamespace().c_str();
+    std::string paramPinB = nh_.getNamespace().c_str();
 
     paramPinA.append("/pinA");
     paramPinB.append("/pinB");
@@ -35,7 +35,7 @@ Encoder::Encoder() :
     /*
 		Publishers
 	*/
-	pub_encoder_ = nh_.advertise<std_msgs::Int32>(topic_encoder_name_.c_str(), 1);
+	pub_encoder_ = nh_.advertise<std_msgs::Int16>(topic_encoder_name_.c_str(), 1);
 
     //WIRING PI Setup
     /*
@@ -70,8 +70,8 @@ void Encoder::increment()
     }
     */
 
-   std_msgs::Int32 encoder_pos;
-   encoder_pos.data = pos_;
+   std_msgs::Int16 encoder_pos;
+   encoder_pos.data = 5;//pos_;
 
    pub_encoder_.publish(encoder_pos);
 

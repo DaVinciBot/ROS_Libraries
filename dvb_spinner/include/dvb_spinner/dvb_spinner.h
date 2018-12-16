@@ -3,6 +3,8 @@
 
 #include "ros/ros.h"
 
+#include "std_msgs/Float32.h"
+
 class Dvb_Spinner
 {
     public:
@@ -26,6 +28,8 @@ class Dvb_Spinner
     protected:
         ros::NodeHandle nh_;
 
+        std::string topic_timer_name;
+
         //State
         bool debug_mode_;
         bool spinner_startable_;
@@ -35,6 +39,9 @@ class Dvb_Spinner
         float_t freq_;
 
         float_t spinOnce_timer_;
+
+        //Spin timer pub
+        ros::Publisher pub_;
 };
 
 #endif

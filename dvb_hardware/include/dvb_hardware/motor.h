@@ -3,7 +3,7 @@
 
 #include "dvb_spinner/dvb_spinner.h"
 
-#include "std_msgs/Int32.h"
+#include "std_msgs/Int16.h"
 
 class Motor : public Dvb_Spinner
 {
@@ -17,7 +17,7 @@ class Motor : public Dvb_Spinner
         //Topics name
         std::string topic_motor_name_;
 
-        void control_callback(const std_msgs::Int32::ConstPtr& control_msg);
+        void control_callback(const std_msgs::Int16::ConstPtr& control_msg);
 
         //Set motor speed
         void control_motor(int32_t pwm, bool trigo_dir);

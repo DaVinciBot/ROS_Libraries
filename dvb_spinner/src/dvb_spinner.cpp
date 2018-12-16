@@ -5,7 +5,11 @@ Dvb_Spinner::Dvb_Spinner() :
     spinner_enable_(false),
     spinner_startable_(false)
 {
-    nh_ = ros::NodeHandle("~");
+    nh_ = ros::NodeHandle();
+
+    topic_timer_name = ros::this_node::getName();
+
+    topic_timer_name.append("/diagnostics/spin_timer");
 
     /*
 		Get all params for ros server
@@ -21,6 +25,8 @@ Dvb_Spinner::Dvb_Spinner() :
     {
 		ROS_WARN("Please check if FREQUENCY | DEBUG_MODE parameters is set in the ROS Parameter Server !\n");
 	}
+
+    pub_ = nh_.advertise<std_msgs::Float32>(topic_timer_name, 1);
 }
 
 Dvb_Spinner::~Dvb_Spinner()
@@ -44,7 +50,12 @@ void Dvb_Spinner::spin(int times_freq)
 
 		ros::Duration(times_freq * freq_).sleep();
 
-        ROS_INFO_COND(debug_mode_, "spin once time : %f", spinOnce_timer_);
+        std_msgs::Float32 spin_timer;
+        spin_timer.data = spinOnce_timer_;
+
+        pub_.publish(spin_timer);
+
+        ROS_INFO_COND(debug_mode_, "%s : %f", topic_timer_name.c_str(), spinOnce_timer_);
 
 		ros::spinOnce();
 	}

@@ -23,7 +23,7 @@ Ultrasonic_Sensor::Ultrasonic_Sensor(std::string topic_ultrasonic_sensor_name, b
     std::string pin_echo = paramPinEcho;
 
     if (
-			      nh_.hasParam(pin_trigg) ||
+		    nh_.hasParam(pin_trigg) ||
             nh_.hasParam(pin_echo) ||
             nh_.hasParam("/ultrasonic/distance_max") ||
             nh_.hasParam("/ultrasonic/distance_scale") ||

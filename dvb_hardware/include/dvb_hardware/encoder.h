@@ -3,7 +3,7 @@
 
 #include "dvb_spinner/dvb_spinner.h"
 
-#include "std_msgs/Int32.h"
+#include "std_msgs/Int16.h"
 
 /*
  * Utilisation avec codeurs Kuebler 2400 mini
@@ -47,7 +47,6 @@ class Encoder : public Dvb_Spinner
             Publishers
         */
         ros::Publisher pub_encoder_;
-  
 };
 
 #endif

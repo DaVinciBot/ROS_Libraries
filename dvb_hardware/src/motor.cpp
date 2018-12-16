@@ -5,12 +5,12 @@ Motor::Motor() :
     Dvb_Spinner(),
     pwm_(0)
 {
-    topic_motor_name_ = ros::this_node::getName();
+    topic_motor_name_ = nh_.getNamespace().c_str();
 
     //Get motor PIN params
-    std::string paramPinPWM = ros::this_node::getName();
-    std::string paramPinDir1 = ros::this_node::getName();
-    std::string paramPinDir2 = ros::this_node::getName();
+    std::string paramPinPWM = nh_.getNamespace().c_str();
+    std::string paramPinDir1 = nh_.getNamespace().c_str();
+    std::string paramPinDir2 = nh_.getNamespace().c_str();
 
     paramPinPWM.append("/pinPWM");
     paramPinDir1.append("/pinDir1");
@@ -75,7 +75,7 @@ void Motor::control_motor(int32_t pwm, bool trigo_dir)
     }*/
 }
 
-void Motor::control_callback(const std_msgs::Int32::ConstPtr& control_msg)
+void Motor::control_callback(const std_msgs::Int16::ConstPtr& control_msg)
 {
     /*
         TODO : Check if exists ros msg to control pwm and direction
