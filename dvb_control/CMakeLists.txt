@@ -23,7 +23,7 @@ find_package(dvb_spinner REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES dvb_hardware
+  LIBRARIES dvb_control
   CATKIN_DEPENDS actionlib
   actionlib_msgs
   geometry_msgs

@@ -6,6 +6,7 @@ Motor::Motor() :
     pwm_(0)
 {
     topic_motor_name_ = nh_.getNamespace().c_str();
+    topic_motor_name_.append("/pid/output");
 
     //Get motor PIN params
     std::string paramPinPWM = nh_.getNamespace().c_str();
