@@ -58,6 +58,8 @@ void Dvb_Spinner::spin(int times_freq)
         ROS_INFO_COND(debug_mode_, "%s : %f", topic_timer_name.c_str(), spinOnce_timer_);
 
 		ros::spinOnce();
+
+        now_ = ros::Time::now();
 	}
 }
 

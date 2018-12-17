@@ -38,6 +38,8 @@ class Dvb_Spinner
         //Frequency
         float_t freq_;
 
+        //Time
+        ros::Time now_;
         float_t spinOnce_timer_;
 
         //Spin timer pub
