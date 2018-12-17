@@ -11,9 +11,6 @@
 #include "geometry_msgs/Point.h"
 #include "geometry_msgs/Pose2D.h"
 
-//DVB Lib
-#include "dvb_hardware/hardware.h"
-
 class Robot
 {
     public:

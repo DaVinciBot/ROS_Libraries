@@ -44,10 +44,10 @@ LINK_DIRECTORIES("/usr/local/lib")
 
 
 add_library(dvb_hardware
-  src/hardware.cpp
   src/encoder.cpp
   src/motor.cpp
   src/ultrasonic_sensor.cpp
+  src/servo.cpp
 )
 
 target_link_libraries(dvb_hardware

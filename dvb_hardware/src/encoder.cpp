@@ -28,7 +28,8 @@ Encoder::Encoder() :
         spinner_startable_ = true;
         spinner_enable_ = true;
     }
-    else{
+    else
+    {
 		ROS_WARN("Please check if encoder PIN parameters are set in the ROS Parameter Server !\n");
 	}
 
