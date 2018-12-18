@@ -50,6 +50,7 @@ include_directories(
 add_library(dvb_control
   src/pid.cpp
   src/move_base.cpp
+  src/track_point.cpp
 )
 
 target_link_libraries(dvb_control

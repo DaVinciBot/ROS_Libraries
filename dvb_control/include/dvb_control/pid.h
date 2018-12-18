@@ -1,5 +1,5 @@
-#ifndef DEF_PID
-#define DEF_PID
+#ifndef DEF_PID_H
+#define DEF_PID_H
 
 #include "dvb_spinner/dvb_spinner.h"
 

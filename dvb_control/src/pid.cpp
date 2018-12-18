@@ -41,7 +41,8 @@ Pid::Pid() :
 		spinner_startable_ = true;
 		spinner_enable_ = true;
 	}
-	else{
+	else
+	{
 		ROS_INFO("Please check if PID parameters are set in the ROS Parameter Server !\n");
 	}	
 
