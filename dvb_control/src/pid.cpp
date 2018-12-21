@@ -16,7 +16,7 @@ Pid::Pid() :
 	topic_pub_output_name_ = nh_.getNamespace();
 
 	topic_sub_setpoint_name_.append("/pid/setpoint");
-	topic_pub_output_name_.append("/pid/output");
+	topic_pub_output_name_.append("/cmd_vel");
 
 	prev_time_ = ros::Time::now();
 

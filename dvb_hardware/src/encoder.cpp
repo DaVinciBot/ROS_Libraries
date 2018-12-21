@@ -6,6 +6,7 @@ Encoder::Encoder() :
 {
     //Topic name for motor and encoder
 	topic_encoder_name_ = nh_.getNamespace().c_str();
+    topic_encoder_name_.append("/pos");
 
     //Get Encoder PIN params
     std::string paramPinA = nh_.getNamespace().c_str();

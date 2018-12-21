@@ -19,7 +19,7 @@ Move_Base::Move_Base() :
 		Get all params from ros server
 	*/
 	//PID params
-	if (
+	if (	
 			nh_.hasParam("/robot/base/centreline_dist") ||
 			nh_.hasParam("/robot/base/wheel_radius")
 	   )

@@ -31,7 +31,7 @@ Dvb_Spinner::Dvb_Spinner() :
 
 Dvb_Spinner::~Dvb_Spinner()
 {
-
+    
 }
 
 void Dvb_Spinner::spin(int times_freq)
